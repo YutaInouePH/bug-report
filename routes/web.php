@@ -3,5 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    \Illuminate\Support\Facades\Mail::raw('This is a test email', function ($message) {
+        $message->to('test@test.com')->subject('Test Email');
+    });
+
+    return 'Message Sent!';
 });
